@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct Score: Codable {
     var unc: Int
     var opponent: Int
@@ -22,13 +21,12 @@ struct Game: Codable {
     var isHomeGame: Bool
 }
 
-
 struct ContentView: View {
     @State private var results = [Game]()
     var body: some View {
         List(results, id: \.id) { item in
-            HStack{
-                VStack(alignment: .leading){
+            HStack {
+                VStack(alignment: .leading) {
                     Text("\(item.team) vs. \(item.opponent)")
                         .font(.headline)
                     Text(item.date)
@@ -36,7 +34,7 @@ struct ContentView: View {
                         .font(.caption)
                 }
                 Spacer()
-                VStack(alignment: .trailing){
+                VStack(alignment: .trailing) {
                     Text("\(item.score.unc) - \(item.score.opponent)")
                     Text(item.isHomeGame ? "Home" : "Away")
                         .foregroundStyle(.secondary)
@@ -44,7 +42,7 @@ struct ContentView: View {
                 }
             }
             
-        }.task{
+        }.task {
             await loadData()
         }
     }
@@ -63,8 +61,6 @@ struct ContentView: View {
         } catch {
             print("Invalid data")
         }
-        
-        
     }
 }
 
