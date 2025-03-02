@@ -27,7 +27,7 @@ struct ContentView: View {
                 Text(item.collectionName)
             }
             
-        }.task{
+        }.task {
             await loadData()
         }
     }
@@ -46,8 +46,6 @@ struct ContentView: View {
         } catch {
             print("Invalid data")
         }
-        
-        
     }
 }
 
